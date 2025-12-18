@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register - TechHaven</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <nav>
+        <h2>TechHaven</h2>
+        <div>
+            <a href="index.html">Home</a>
+            <a href="login.html">Login</a>
+        </div>
+    </nav>
+
+    <div class="form-box">
+        <h2 style="text-align: center;">Create Account</h2>
+        <form id="register-form">
+            <label>Full Name</label>
+            <input type="text" id="fullName" required placeholder="John Doe">
+
+            <label>Email</label>
+            <input type="email" id="email" required placeholder="user@example.com">
+            
+            <label>Password</label>
+            <input type="password" id="password" required placeholder="******">
+            
+            <button type="submit">Register</button>
+        </form>
+        <p style="text-align: center; margin-top: 10px;">
+            Already have an account? <a href="login.html">Login</a>
+        </p>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script>
+        async function handleRegister(event) {
+            event.preventDefault();
+            
+            const fullName = document.getElementById("fullName").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            try {
+                // Call the Backend API
+                const data = await request("/auth/register", "POST", { 
+                    fullName, 
+                    email, 
+                    password 
+                });
+                
+                // If successful, save token and redirect
+                if (data.token) {
+                    localStorage.setItem("jwt_token", data.token);
+                    alert("Registration Successful!");
+                    window.location.href = "products.html";
+                }
+            } catch (error) {
+                alert("Registration Failed: Email may already exist.");
+            }
+        }
+
+        document.getElementById("register-form").addEventListener("submit", handleRegister);
+    </script>
+</body>
+</html>

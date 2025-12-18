@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to TechHaven</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Specific styles for the Hero section */
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            border-radius: 0 0 20px 20px;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #27ae60;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: background 0.3s;
+        }
+        .cta-button:hover {
+            background-color: #219150;
+        }
+        .features {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 50px;
+            text-align: center;
+        }
+        .feature-item {
+            padding: 20px;
+            max-width: 300px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <h2>TechHaven</h2>
+        <div>
+            <a href="login.html">Login</a>
+            <a href="register.html">Register</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h1>TechHaven</h1>
+        <p>The ultimate marketplace for developers and tech enthusiasts.</p>
+        <a href="login.html" class="cta-button">Start Shopping</a>
+    </div>
+
+    <div class="container">
+        <div class="features">
+            <div class="feature-item">
+                <h3>🚀 Fast Shipping</h3>
+                <p>Get your tech gear delivered within 24 hours.</p>
+            </div>
+            <div class="feature-item">
+                <h3>🔒 Secure Payments</h3>
+                <p>Powered by industry-standard encryption.</p>
+            </div>
+            <div class="feature-item">
+                <h3>💻 Top Quality</h3>
+                <p>Curated products for serious developers.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // UX Improvement: If user is already logged in, redirect to products
+        if (localStorage.getItem("jwt_token")) {
+            window.location.href = "products.html";
+        }
+    </script>
+</body>
+</html>

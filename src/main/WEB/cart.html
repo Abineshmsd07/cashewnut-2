@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Cart - TechHaven</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <nav>
+        <h2>TechHaven</h2>
+        <div>
+            <a href="products.html">Back to Shop</a>
+            <a href="#" onclick="logout()">Logout</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Your Shopping Cart</h1>
+        <div id="cart-contents">
+            </div>
+        
+        <button onclick="checkout()" style="width: 200px; margin-top: 20px;">
+            Place Order
+        </button>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/cart.js"></script>
+    <script>
+        // Simple logic to show what's in LocalStorage
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const container = document.getElementById("cart-contents");
+        
+        if(cart.length === 0) {
+            container.innerHTML = "<p>Your cart is empty.</p>";
+        } else {
+            let html = "<ul>";
+            cart.forEach(item => {
+                html += `<li>Product ID: ${item.productId} | Quantity: ${item.quantity}</li>`;
+            });
+            html += "</ul>";
+            container.innerHTML = html;
+        }
+    </script>
+</body>
+</html>
